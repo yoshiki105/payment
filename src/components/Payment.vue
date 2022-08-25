@@ -18,7 +18,9 @@
 </template>
 
 <script setup lang="ts">
-const itemName1 = 'Desk'
+import { ref } from 'vue'
+
+const itemName1 = ref<string>('Desk')
 const itemName2 = 'Bike'
 
 const price1 = 20000
@@ -33,6 +35,8 @@ const buy = (itemName: string) => {
 
 const input = (event: any) => {
   console.log(event.target.value)
+  // refはオブジェクトなので、itemName1.valueとすると、constで定義していても再代入できる
+  itemName1.value = event.target.value
 }
 </script>
 
