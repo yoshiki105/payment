@@ -2,11 +2,12 @@
   <div class="container">
     <h1>Payment</h1>
     <input type="text" @input="input">
+    <input type="text" @input="inputPrice">
     <div class="payment">
-      <label for="">{{ itemName1 }}</label>
-      <label for="">{{ price1 }}</label>
+      <label for="">{{ item1.name }}</label>
+      <label for="">{{ item1.price }}</label>
       <a :href="url1">bought at...</a>
-      <button @click="buy(itemName1)">BUY</button>
+      <button @click="buy(item1.name)">BUY</button>
     </div>
     <div class="payment">
       <label for="">{{ itemName2 }}</label>
@@ -18,12 +19,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
-const itemName1 = ref<string>('Desk')
+// const itemName1 = ref<string>('Desk')
 const itemName2 = 'Bike'
 
-const price1 = 20000
+const item1 = reactive({
+  name: 'Desk',
+  price: 40000
+})
+
+// const price1 = 20000
 const price2 = 40000
 
 const url1 = '#'
@@ -34,9 +40,12 @@ const buy = (itemName: string) => {
 }
 
 const input = (event: any) => {
-  console.log(event.target.value)
   // refはオブジェクトなので、itemName1.valueとすると、constで定義していても再代入できる
-  itemName1.value = event.target.value
+  item1.name = event.target.value
+}
+
+const inputPrice = (event: any) => {
+  item1.price = event.target.value
 }
 </script>
 
