@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h1>最近の支出</h1>
+    <h1>Payment</h1>
+    <input type="text" @input="input">
     <div class="payment">
       <label for="">{{ itemName1 }}</label>
       <label for="">{{ price1 }}</label>
@@ -28,6 +29,10 @@ const url2 = '#'
 
 const buy = (itemName: string) => {
   alert('Are you sure to buy ' + itemName + ' ?')
+}
+
+const input = (event: any) => {
+  console.log(event.target.value)
 }
 </script>
 
