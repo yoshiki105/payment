@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <h1>Payment</h1>
-    <input type="text" @input="input">
-    <input type="text" @input="inputPrice">
+    <input type="text" v-model="item1.name">
+    <input type="text" v-model="item1.price">
     <div class="payment">
       <label for="">{{ item1.name }}</label>
       <label for="">{{ item1.price }}</label>
+      <button @click="clear">Clear</button>
       <a :href="url1">bought at...</a>
       <button @click="buy(item1.name)">BUY</button>
     </div>
@@ -39,13 +40,9 @@ const buy = (itemName: string) => {
   alert('Are you sure to buy ' + itemName + ' ?')
 }
 
-const input = (event: any) => {
-  // refはオブジェクトなので、itemName1.valueとすると、constで定義していても再代入できる
-  item1.name = event.target.value
-}
-
-const inputPrice = (event: any) => {
-  item1.price = event.target.value
+const clear = () => {
+  item1.name = ''
+  item1.price = 0
 }
 </script>
 
